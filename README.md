@@ -1,5 +1,5 @@
-# Crée un nouveau README.md avec le contenu original + nos améliorations
-echo "# projet_IA - Assistant Intelligent
+# Notre Assistant IA
+ Assistant Intelligent
 
 Projet de fin d’année : IA sous forme de site web intelligent proposant des articles personnalisés sur le sport, la musique, les jeux vidéos et l'actualité générale.
 
