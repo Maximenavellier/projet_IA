@@ -1,0 +1,14 @@
+# Environnement virtuel
+venv/
+.env
+
+# Fichiers système
+.DS_Store
+Thumbs.db
+
+# Streamlit
+.streamlit/
+
+# Python
+__pycache__/
+*.pyc
