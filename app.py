@@ -22,7 +22,10 @@ GNEWS_API_KEY = "7d4dac92369bac5d8cd91e547bef9f54"  # Remplacez par votre clé A
 RATINGS_FILE = "ratings.json"
 
 # Mots à ignorer pour ne pas polluer la recherche
-STOP_WORDS = set(["le", "la", "les", "un", "une", "des", "de", "du", "au", "aux", "et", "ou", "est", "sont", "a", "ont", "qui", "que", "quoi", "dont", "où", "je", "tu", "il", "elle", "nous", "vous", "ils", "elles", "quel", "quelle", "quelles", "quels", "mon", "ton", "son", "notre", "votre", "leur", "dans", "sur", "avec", "pour", "par", "sans", "comment", "pourquoi", "quand"])
+STOP_WORDS = set([
+    "le", "la", "les", "un", "une", "des", "de", "du", "au", "aux", "et", "ou", "est", "sont", "a", "ont", "qui", "que", "quoi", "dont", "où", "je", "tu", "il", "elle", "nous", "vous", "ils", "elles", "quel", "quelle", "quelles", "quels", "mon", "ton", "son", "notre", "votre", "leur", "dans", "sur", "avec", "pour", "par", "sans", "comment", "pourquoi", "quand",
+    "exemple", "est-ce", "ce", "ça", "fait", "faire", "une", "nouvelle", "nouveau", "en", "si", "plus", "moins", "très", "trop", "beaucoup", "vraiment", "va", "vas", "veut", "veux", "veulent", "sais", "sait", "savent", "connais", "connait", "connaissent", "y", "t", "s", "d"
+])
 
 
 # --- GESTION DES NOTES (PERSISTANCE) ---
@@ -55,7 +58,7 @@ def get_search_query(question):
     meaningful_words = [word for word in words if word and word not in STOP_WORDS]
     
     if not meaningful_words:
-        return [question] # Si tout est filtré, on garde la question originale
+        return [question]
         
     print(f"Mots-clés extraits de la requête : {meaningful_words}")
     return meaningful_words
@@ -68,8 +71,6 @@ def get_news(keywords, max_articles=20):
     if not keywords:
         return []
     
-    # Construit une requête de type "mot1 OR mot2 OR mot3"
-    # Cela permet de trouver des articles contenant au moins un des mots-clés.
     query = " OR ".join(f'"{word}"' for word in keywords)
     
     try:
@@ -126,29 +127,25 @@ def afficher_resultats_recherche(articles, query_words, num_to_show):
     with results_container.container():
         st.markdown('<div class="fade-in">', unsafe_allow_html=True)
         
-        # Calcul du score de pertinence basé sur les mots de la requête originale
         scored_articles = []
         for article in articles:
             contenu = (article["titre"] + " " + article["description"]).lower()
             mots_contenu = re.split(r'\W+', contenu)
             score = sum(mots_contenu.count(mot) for mot in query_words)
             
-            # Bonus si plusieurs mots-clés sont présents
             mots_trouves = sum(1 for mot in query_words if mot in mots_contenu)
             if mots_trouves > 1:
-                score += mots_trouves * 5 # Ajoute un bonus pour chaque mot-clé supplémentaire trouvé
+                score += mots_trouves * 5
             
             if score > 0:
                 scored_articles.append({"article": article, "score": score})
         
-        # Trier par score
         scored_articles.sort(key=lambda x: x["score"], reverse=True)
 
         if not scored_articles:
             st.warning("🤔 Aucun article pertinent trouvé après filtrage.")
             return
 
-        # Afficher le meilleur résultat
         meilleur_article = scored_articles[0]
         score_text = f"(Mots en commun : {meilleur_article['score']})"
         st.success(f"✅ **Meilleur résultat** {score_text}")
@@ -157,11 +154,10 @@ def afficher_resultats_recherche(articles, query_words, num_to_show):
             st.caption(f"Date : {meilleur_article['article']['date']}")
             st.write(meilleur_article['article']['description'])
 
-        # Afficher les 5 autres résultats pertinents sous forme d'expanders
         if len(scored_articles) > 1:
             st.write("---")
             st.info("🔎 **Autres résultats similaires :**")
-            for res in scored_articles[1:num_to_show + 1]: # Affiche les 5 suivants
+            for res in scored_articles[1:num_to_show + 1]:
                 score_text = f"| Mots en commun : {res['score']}"
                 expander_label = f"**{res['article']['titre']}** (Date : {res['article']['date']}) {score_text}"
                 with st.expander(expander_label):
@@ -180,7 +176,7 @@ def page_recherche(num_articles_to_show):
         st.write(f"Recherche d'articles pour : **'{' '.join(query_words)}'**")
         
         with st.spinner(f"🔍 Recherche des actualités..."):
-            articles = get_news(query_words, max_articles=20) # On récupère plus d'articles pour avoir un meilleur tri
+            articles = get_news(query_words, max_articles=100)
         
         if articles:
             afficher_resultats_recherche(articles, query_words, num_articles_to_show)
