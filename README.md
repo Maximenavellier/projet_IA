@@ -1,15 +1,15 @@
 # Notre Assistant IA
 
-Assistant Intelligent
+Assistant Intelligent développé avec **Streamlit**
 
 Projet de fin d’année : IA sous forme de site web intelligent proposant des articles personnalisés sur le sport, la musique, les jeux vidéos et l'actualité générale.
 
-## 🚀 Fonctionnalités
+## Fonctionnalités
 
 - **Interface Multi-Pages :** Navigation claire entre un mode "Recherche" et un mode "Parcourir les articles".
 - **Recherche Intelligente et Pertinente :**
   - **Analyse sémantique :** L'IA distingue les mots-clés principaux des mots de contexte pour affiner la recherche.
-  - **Extraction de contenu :** L'assistant ne se contente pas des titres ou descriptions. Il scrape le contenu complet des articles pour une analyse en profondeur.
+  - **Extraction de contenu (avec `Newspaper3k`) :** L'assistant ne se contente pas des titres ou descriptions. Il scrape le contenu complet des articles pour une analyse en profondeur.
   - **Algorithme de score avancé :** La pertinence est calculée en fonction de la présence obligatoire des mots-clés principaux, de leur fréquence, et d'un bonus s'ils apparaissent dans le titre.
 - **Options de Tri Avancées :**
   - Triez les résultats de recherche par pertinence ou par date de publication.
@@ -22,15 +22,15 @@ Projet de fin d’année : IA sous forme de site web intelligent proposant des a
   - **Contenu intégré :** Lisez un résumé ou l'intégralité du contenu de l'article directement dans l'application, avec un lien vers la source originale.
   - **Visuels attractifs :** Les images des articles sont directement affichées pour une meilleure expérience visuelle.
 - **Contrôle de l'Affichage :** Choisissez le nombre d'articles à afficher via un sélecteur dans la barre latérale.
-- **Contenu en Temps Réel :** Les articles sont récupérés en direct via l'API GNews pour garantir des informations toujours à jour.
+- **Contenu en Temps Réel (avec `GNews API`) :** Les articles sont récupérés en direct pour garantir des informations toujours à jour.
 - **Performances Optimisées :** Le scraping du contenu de plusieurs articles est effectué en parallèle pour réduire le temps de chargement.
 
-## 👥 Équipe
+## Équipe
 
 - Noam Boutounas
 - Maxime Navellier
 
-## 📦 Installation
+## Installation
 
 1.  Assurez-vous d'avoir Python installé sur votre machine.
 2.  Clonez ou téléchargez ce projet.
