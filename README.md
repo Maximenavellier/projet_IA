@@ -4,7 +4,7 @@ Assistant Intelligent développé avec **Streamlit**
 
 Projet de fin d’année : IA sous forme de site web intelligent proposant des articles personnalisés sur le sport, la musique, les jeux vidéos et l'actualité générale.
 
-## 🚀 Fonctionnalités
+## Fonctionnalités
 
 - **Interface Multi-Pages :** Navigation claire entre un mode "Recherche" et un mode "Parcourir les articles".
 - **Recherche Intelligente et Pertinente :**
@@ -25,12 +25,12 @@ Projet de fin d’année : IA sous forme de site web intelligent proposant des a
 - **Contenu en Temps Réel (avec `GNews API`) :** Les articles sont récupérés en direct pour garantir des informations toujours à jour.
 - **Performances Optimisées :** Le scraping du contenu de plusieurs articles est effectué en parallèle pour réduire le temps de chargement.
 
-## 👥 Équipe
+## Équipe
 
 - Noam Boutounas
 - Maxime Navellier
 
-## 📦 Installation
+## Installation
 
 1.  Assurez-vous d'avoir Python installé sur votre machine.
 2.  Clonez ou téléchargez ce projet.
