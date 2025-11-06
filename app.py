@@ -322,7 +322,7 @@ def page_generale(num_articles_to_show):
     query = theme_filter if theme_filter != "Actualité" else "actualité générale"
     
     with st.spinner(f"Chargement des articles sur le thème '{query}'..."):
-        articles_a_afficher = get_news(query.split(), max_articles=num_articles_to_show * 2)
+        articles_a_afficher = get_news({"principal": query}, max_articles=num_articles_to_show * 2)
 
     if sort_by == "Date (plus récent)":
         articles_a_afficher.sort(key=lambda x: datetime.strptime(x['date'], '%Y-%m-%d %H:%M'), reverse=True)
