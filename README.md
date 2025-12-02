@@ -1,47 +1,53 @@
-# Notre Assistant IA
+Culturia - Assistant Culturel Intelligent
+Application web développée avec Streamlit dans le cadre d'un projet de fin d'année. Culturia agrège et analyse des articles d'actualité (Sport, Musique, Jeux Vidéo, Actualité) pour proposer une navigation simplifiée et pertinente.
 
-Assistant Intelligent développé avec **Streamlit**
+Fonctionnalités Principales
+Interface et Navigation
+Design Personnalisé : Interface épurée utilisant des polices Serif (Playfair Display & Merriweather) rappelant la presse traditionnelle.
 
-Projet de fin d’année : IA sous forme de site web intelligent proposant des articles personnalisés sur le sport, la musique, les jeux vidéos et l'actualité générale.
+Mise en Page HTML/CSS : Utilisation de composants HTML personnalisés pour dépasser les limitations natives de Streamlit (cartes articles, grilles, conteneurs).
 
-## Fonctionnalités
+Standardisation Visuelle : Toutes les images sont automatiquement affichées au format 16/9 via CSS.
 
-- **Interface Multi-Pages :** Navigation claire entre un mode "Recherche" et un mode "Parcourir les articles".
-- **Recherche Intelligente et Pertinente :**
-  - **Analyse sémantique :** L'IA distingue les mots-clés principaux des mots de contexte pour affiner la recherche.
-  - **Extraction de contenu (avec `Newspaper3k`) :** L'assistant ne se contente pas des titres ou descriptions. Il scrape le contenu complet des articles pour une analyse en profondeur.
-  - **Algorithme de score avancé :** La pertinence est calculée en fonction de la présence obligatoire des mots-clés principaux, de leur fréquence, et d'un bonus s'ils apparaissent dans le titre.
-- **Options de Tri Avancées :**
-  - Triez les résultats de recherche par pertinence ou par date de publication.
-  - Triez les articles en mode "Parcourir" par date ou par note.
-- **Système de Notation Persistant :**
-  - Notez les articles de 1 à 5 étoiles.
-  - Vos notes sont sauvegardées localement dans un fichier `ratings.json` et sont conservées entre les sessions.
-- **Affichage Dynamique et Intuitif :**
-  - **Présentation claire :** Le meilleur résultat est mis en avant, tandis que les autres articles similaires sont groupés dans des sections dépliables.
-  - **Contenu intégré :** Lisez un résumé ou l'intégralité du contenu de l'article directement dans l'application, avec un lien vers la source originale.
-  - **Visuels attractifs :** Les images des articles sont directement affichées pour une meilleure expérience visuelle.
-- **Contrôle de l'Affichage :** Choisissez le nombre d'articles à afficher via un sélecteur dans la barre latérale.
-- **Contenu en Temps Réel (avec `GNews API`) :** Les articles sont récupérés en direct pour garantir des informations toujours à jour.
-- **Performances Optimisées :** Le scraping du contenu de plusieurs articles est effectué en parallèle pour réduire le temps de chargement.
+Barre de Contrôle : Regroupement de la recherche, du mode "Parcourir", de l'historique et du sélecteur de quantité d'articles.
 
-## Équipe
+Recherche et Analyse
+Moteur de Recherche : Analyse des mots-clés et distinction entre le sujet principal et le contexte.
 
-- Noam Boutounas
-- Maxime Navellier
+Correction Orthographique : Module de détection et de suggestion pour les termes mal orthographiés.
 
-## Installation
+Scraping de Contenu : Extraction du texte intégral des articles via Newspaper3k pour une analyse plus profonde que les simples méta-données.
 
-1.  Assurez-vous d'avoir Python installé sur votre machine.
-2.  Clonez ou téléchargez ce projet.
-3.  Ouvrez un terminal dans le dossier du projet et installez les dépendances :
+Scoring de Pertinence : Algorithme calculant la pertinence des articles en fonction de la fréquence des mots-clés (affichage détaillé dans la section "Mots en commun").
 
-    ```bash
-    pip install -r requirements.txt
-    ```
+Expérience de Lecture
+Historique : Accès rapide aux 10 derniers articles consultés via un menu déroulant.
 
-4.  Lancez l'application Streamlit :
+Lecture Intégrée : Possibilité de lire le contenu complet de l'article directement dans l'application via un bouton dépliant, sans redirection obligatoire.
 
-    ```bash
-    streamlit run app.py
-    ```
+Filtrage Thématique : Mode "Parcourir" permettant de trier les articles par catégorie (Sport, Tech, etc.).
+
+Aspects Techniques
+API GNews : Récupération des flux d'actualités en temps réel.
+
+Persistance des Données : Sauvegarde locale des notes attribuées aux articles (ratings.json).
+
+Optimisation : Utilisation du multi-threading pour le scraping des articles afin de réduire les temps de chargement.
+
+Équipe développement :
+
+Noam Boutounas
+Maxime Navellier
+
+Installation
+Assurez-vous d'avoir Python installé sur votre machine.
+
+Clonez ou téléchargez ce projet.
+
+Ouvrez un terminal dans le dossier du projet et installez les dépendances :
+
+pip install -r requirements.txt
+
+Lancez l'application Streamlit :
+
+streamlit run app.py
