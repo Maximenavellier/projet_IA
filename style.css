@@ -1,0 +1,326 @@
+/* ==========================================================================
+   1. IMPORTATION DES POLICES
+   ========================================================================== */
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap");
+
+/* ==========================================================================
+   2. VARIABLES
+   ========================================================================== */
+:root {
+  /* Couleurs (Thème Clair par défaut) */
+  --bg-color: #f7f3e9;
+  --text-color: #0a0a0a;
+  --border-color: #000000;
+  --card-bg: #ffffff;
+  --shadow-color: #000000;
+
+  /* Polices */
+  --font-title: "Playfair Display", serif;
+  --font-body: "Merriweather", serif;
+
+  /* Dimensions */
+  --border-thick: 3px;
+  --border-thin: 2px;
+  --radius-big: 15px;
+  --radius-small: 12px;
+  --pill-radius: 999px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-color: #151515;
+    --text-color: #ffffff;
+    --border-color: #ffffff;
+    --card-bg: #1f1f1f;
+    --shadow-color: #000000;
+  }
+}
+
+/* ==========================================================================
+   3. STYLE GÉNÉRAL
+   ========================================================================== */
+.stApp {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: var(--font-body);
+}
+
+/* Masquer les éléments parasites */
+#MainMenu,
+footer,
+.stDeployButton {
+  display: none;
+}
+
+/* ==========================================================================
+   4. NAVIGATION & HEADER
+   ========================================================================== */
+.nav-container-custom {
+  border-bottom: var(--border-thick) solid var(--border-color);
+  padding: 10px 0 20px 0;
+  margin-bottom: 40px;
+}
+
+/* Style des boutons génériques */
+div.stButton > button {
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  border: var(--border-thin) solid var(--border-color);
+  border-radius: var(--pill-radius);
+  padding: 6px 10px;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 700;
+  width: 100%;
+  white-space: nowrap;
+  box-shadow: 2px 2px 0px var(--border-color);
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+
+div.stButton > button:hover {
+  transform: translateY(2px);
+  box-shadow: none;
+}
+
+/* Boutons +/- plus petits */
+div[data-testid="column"] div.stButton > button {
+  padding: 2px 5px;
+  min-height: 0px;
+}
+
+/* --- HISTORIQUE (Expander) --- */
+.streamlit-expanderHeader {
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  border: var(--border-thin) solid var(--border-color);
+  border-radius: var(--pill-radius);
+  padding: 6px 15px;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.9rem;
+  box-shadow: 2px 2px 0px var(--border-color);
+}
+.streamlit-expanderContent {
+  background-color: var(--card-bg);
+  border: var(--border-thin) solid var(--border-color);
+  border-radius: 10px;
+  margin-top: 5px;
+  padding: 10px;
+}
+.history-item {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  padding: 5px 0;
+  border-bottom: 1px dashed var(--border-color);
+  color: var(--text-color);
+}
+.history-item a {
+  text-decoration: none;
+  color: var(--text-color);
+}
+.history-item:last-child {
+  border-bottom: none;
+}
+
+/* ==========================================================================
+   5. BRANDING
+   ========================================================================== */
+.branding-container {
+  text-align: center;
+  margin: 0px 0 40px 0;
+}
+
+h1 {
+  font-family: var(--font-title);
+  font-weight: 900;
+  font-size: clamp(4rem, 8vw, 8rem) !important;
+  margin: 0;
+  line-height: 1.1;
+  letter-spacing: -2px;
+  color: var(--text-color);
+}
+
+.tagline {
+  font-family: var(--font-body);
+  font-size: 1.2rem;
+  font-style: italic;
+  text-align: center;
+  color: var(--text-color);
+  opacity: 0.8;
+  margin-top: 5px;
+}
+
+/* ==========================================================================
+   6. BARRE DE RECHERCHE
+   ========================================================================== */
+[data-testid="stTextInput"] > div > div > input {
+  border: var(--border-thick) solid var(--border-color);
+  border-radius: 30px;
+  padding: 15px 25px;
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 1rem;
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  box-shadow: 4px 4px 0px var(--shadow-color);
+}
+[data-testid="stTextInput"] > div > div > input::placeholder {
+  color: rgba(125, 125, 125, 0.7);
+}
+
+/* ==========================================================================
+   7. CARTES ARTICLES (HTML PUR)
+   ========================================================================== */
+.article-card-hero {
+  background-color: var(--card-bg);
+  border: var(--border-thick) solid var(--border-color);
+  border-radius: var(--radius-big);
+  padding: 25px;
+  margin-bottom: 40px;
+  box-shadow: 8px 8px 0px var(--shadow-color);
+  display: flex;
+  flex-direction: column;
+}
+
+.article-card-secondary {
+  background-color: var(--card-bg);
+  border: var(--border-thin) solid var(--border-color);
+  border-radius: var(--radius-small);
+  padding: 15px;
+  box-shadow: 4px 4px 0px var(--shadow-color);
+  transition: transform 0.2s;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.article-card-secondary:hover {
+  transform: translateY(-3px);
+}
+
+/* --- IMAGES (FIX RATIO 16/9) --- */
+.card-image-container {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  border: var(--border-thin) solid var(--border-color);
+  overflow: hidden;
+  position: relative;
+  background-color: #333;
+}
+
+.card-image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* --- TYPOGRAPHIE CARTES --- */
+.card-title {
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 2rem;
+  line-height: 1.1;
+  color: var(--text-color);
+  margin-top: 0;
+  margin-bottom: 15px;
+  text-decoration: none;
+  display: block;
+}
+
+.secondary-title {
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 1.3rem;
+  line-height: 1.2;
+  color: var(--text-color);
+  margin-bottom: 10px;
+  text-decoration: none;
+  display: block;
+}
+
+.card-text {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--text-color);
+  text-align: justify;
+  margin-bottom: 15px;
+  line-height: 1.5;
+}
+
+.card-meta {
+  margin-top: auto;
+  font-size: 0.8rem;
+  font-style: italic;
+  text-align: right;
+  color: var(--text-color);
+  opacity: 0.7;
+  border-top: 1px solid var(--border-color);
+  padding-top: 8px;
+}
+
+/* --- MENUS DÉROULANTS (DETAILS/SUMMARY) --- */
+details {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border: var(--border-thin) solid var(--border-color);
+  border-radius: 8px;
+  padding: 8px;
+  background-color: rgba(125, 125, 125, 0.05);
+  cursor: pointer;
+}
+summary {
+  font-weight: bold;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--text-color);
+}
+summary::after {
+  content: "▼";
+  font-size: 0.8rem;
+}
+details[open] summary::after {
+  transform: rotate(180deg);
+}
+details ul {
+  margin: 10px 0 0 0;
+  padding-left: 20px;
+  color: var(--text-color);
+}
+
+/* STYLE SPÉCIFIQUE POUR "LIRE LA SUITE" */
+.read-more-details {
+  border-color: var(--border-color);
+  background-color: rgba(0, 0, 0, 0.02);
+  margin-bottom: 20px;
+}
+.read-more-details summary {
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+}
+.full-content-text {
+  padding: 15px;
+  font-family: var(--font-body);
+  line-height: 1.6;
+  background: var(--card-bg);
+  border-top: 1px solid var(--border-color);
+  margin-top: 10px;
+}
+
+/* Ajustements Streamlit */
+header[data-testid="stHeader"] {
+  background: transparent;
+  box-shadow: none;
+}
+#root > div:nth-child(1) > div > div > div > div > section > div {
+  padding-top: 1rem;
+}
