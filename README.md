@@ -1,53 +1,72 @@
-Culturia - Assistant Culturel Intelligent
-Application web développée avec Streamlit dans le cadre d'un projet de fin d'année. Culturia agrège et analyse des articles d'actualité (Sport, Musique, Jeux Vidéo, Actualité) pour proposer une navigation simplifiée et pertinente.
+# 🏛️ Culturia
+### *L'Assistant Culturel Intelligent & Immersif*
 
-Fonctionnalités Principales
-Interface et Navigation
-Design Personnalisé : Interface épurée utilisant des polices Serif (Playfair Display & Merriweather) rappelant la presse traditionnelle.
+![Python](https://img.shields.io/badge/Python-3.9%2B-blue?style=for-the-badge&logo=python&logoColor=white)
+![Streamlit](https://img.shields.io/badge/Streamlit-App-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)
+![Status](https://img.shields.io/badge/Status-En_Développement-green?style=for-the-badge)
 
-Mise en Page HTML/CSS : Utilisation de composants HTML personnalisés pour dépasser les limitations natives de Streamlit (cartes articles, grilles, conteneurs).
+> **Culturia** réinvente la veille culturelle. Fini le scroll infini : accédez à une agrégation intelligente d'articles sur le **Sport**, la **Musique**, les **Jeux Vidéo** et l'**Actualité**, présentée dans une interface simple d'utilisation et accessible a tous.
 
-Standardisation Visuelle : Toutes les images sont automatiquement affichées au format 16/9 via CSS.
+---
 
-Barre de Contrôle : Regroupement de la recherche, du mode "Parcourir", de l'historique et du sélecteur de quantité d'articles.
+## 📸 Aperçu
 
-Recherche et Analyse
-Moteur de Recherche : Analyse des mots-clés et distinction entre le sujet principal et le contexte.
+| Page d'Accueil | Lecture d'Article |
+|:---:|:---:|
+| *Interface de recherche épurée* | *Mode lecture immersive* |
+| <img width="1902" height="625" alt="image" src="https://github.com/user-attachments/assets/673db9ad-bb5e-4455-b3e3-9518d55d70a1" />|<img width="890" height="947" alt="image" src="https://github.com/user-attachments/assets/70f0ca82-a4ab-4559-85fb-b977d6cb9a29" />
 
-Correction Orthographique : Module de détection et de suggestion pour les termes mal orthographiés.
 
-Scraping de Contenu : Extraction du texte intégral des articles via Newspaper3k pour une analyse plus profonde que les simples méta-données.
+---
 
-Scoring de Pertinence : Algorithme calculant la pertinence des articles en fonction de la fréquence des mots-clés (affichage détaillé dans la section "Mots en commun").
+## ✨ Fonctionnalités Clés
 
-Expérience de Lecture
-Historique : Accès rapide aux 10 derniers articles consultés via un menu déroulant.
+### 🎨 1. Expérience Utilisateur "Néo-Journal"
+Nous avons cassé les codes de Streamlit pour offrir une **expérience visuelle unique** :
+* **Design Sur-Mesure :** Injection de CSS avancé pour une interface élégante (Police *Playfair Display* & *Merriweather*).
+* **Hero Cards & Grilles :** Une mise en page hiérarchisée avec un article "à la une" et une grille secondaire structurée.
+* **Harmonie Visuelle :** Toutes les images sont automatiquement redimensionnées et recadrées au format **16/9** pour un rendu impeccable.
+* **Barre de Contrôle Unifiée :** Navigation fluide entre la *Recherche*, le mode *Parcourir*, l'*Historique* et les *Paramètres*.
 
-Lecture Intégrée : Possibilité de lire le contenu complet de l'article directement dans l'application via un bouton dépliant, sans redirection obligatoire.
+### 🧠 2. Moteur de Recherche Intelligent
+* **Analyse Sémantique :** L'algorithme distingue le **sujet principal** des termes contextuels pour affiner les résultats.
+* **Correction Orthographique  :** Module de détection automatique des fautes de frappe (ex: *"Mbape"* → *"Mbappe"*).
+* **Scoring de Pertinence :** Calcul dynamique du score de chaque article basé sur la fréquence et la position des mots-clés (si le mot est présent dans le titre, la description...).
+* **Transparence :** Chaque résultat affiche une section **"Mots en commun"** détaillant les correspondances trouvées.
 
-Filtrage Thématique : Mode "Parcourir" permettant de trier les articles par catégorie (Sport, Tech, etc.).
+### 📖 3. Lecture Optimisée
+* **Contenu Intégré :** Plus besoin de quitter l'application. Lisez l'intégralité de l'article via le bouton dépliant **"Lire la suite"**.
+* **Historique de Session 🕒 :** Retrouvez instantanément vos 10 dernières lectures via un menu déroulant dédié.
+* **Filtrage Thématique :** Explorez les articles par catégories (*Sport, Tech, Musique...*) en un clic.
 
-Aspects Techniques
-API GNews : Récupération des flux d'actualités en temps réel.
+---
 
-Persistance des Données : Sauvegarde locale des notes attribuées aux articles (ratings.json).
+## 🛠️ Stack Technique
 
-Optimisation : Utilisation du multi-threading pour le scraping des articles afin de réduire les temps de chargement.
+* **Framework :** `Streamlit` (Frontend & Backend léger)
+* **Data & API :** `GNews` (Flux temps réel), `Newspaper3k` (Scraping de contenu)
+* **Traitement :** `Python` (Multi-threading, Regex, Logique de scoring)
+* **Persistance :** `JSON` (Sauvegarde locale des notes et préférences >*EN DEVELOPPEMENT*)
 
-Équipe développement :
+---
+
+## 🚀 Installation & Démarrage
+
+Suivez ces étapes pour lancer **Culturia** sur votre machine locale :
+1. Telecharger tout les fichiers présent sur le Github.
+   
+2. Installer les dépendances
+
+```Bash
+pip install -r requirements.txt
+```
+3. Lancer l'application
+```Bash
+
+streamlit run app.py
+```
+👥 Equipe développement
+Projet réalisé dans le cadre d'un projet de fin d'année en 3e année de licence informatique a l'INSA HDF par :
 
 Noam Boutounas
 Maxime Navellier
-
-Installation
-Assurez-vous d'avoir Python installé sur votre machine.
-
-Clonez ou téléchargez ce projet.
-
-Ouvrez un terminal dans le dossier du projet et installez les dépendances :
-
-pip install -r requirements.txt
-
-Lancez l'application Streamlit :
-
-streamlit run app.py
